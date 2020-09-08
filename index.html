@@ -3,12 +3,60 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Sand Art</title>
-	<style></style>
-	<script></script>
+	<style src="styles/index.css"></style>
+	<script src= "src/cnmLib.js"></script>
+    <script src= "src/index.js"></script>
 </head>
 <body>
-<canvas width="640" height="480">
+<canvas>
 		Get a real browser!
 </canvas>
+    
+      <section id="controls">
+    <!--<label>Outline: Temp while we figure out if this is doable
+      <select id="chooserTool">
+        <option value="pencil" selected>Pencil</option>
+        <option value="rectangle">Rectangle</option> 
+        <option value="line">Line</option>
+        <option value="circle">Circle</option>
+      </select>
+    </label>-->
+    	
+    <label>Stream Speed: 
+      <select id="chooserStreamSpeed">
+        <option>0</option>
+        <option selected>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+        <option>10</option>
+      </select>
+     </label>
+		
+    <label>Sand Color: 
+      <select id="chooserSandColor"> 
+        <option value="red">Red</option>
+        <option value="green" selected>Green</option>
+        <option value="blue">Blue</option>
+      </select>
+    </label>
+    
+    <label>Fill Color: 
+      <select id="chooserFillStyle"> 
+        <option value="red">Red</option>
+        <option value="green" >Green</option>
+        <option value="blue" selected>Blue</option>
+      </select>
+    </label>
+      
+    <span><input id="btnFill" type="button" value="Fill"/></span>  
+      <span><input id="btnClear" type="button" value="Clear"/></span>
+      <span><input id="btnExport" type="button" value="Export"/></span>
+  </section>
 </body>
 </html>
