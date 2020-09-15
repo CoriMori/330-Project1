@@ -18,19 +18,26 @@
         sandJS.init(ctx,canvas);
         
         setInterval(update, 1000/15);
-        setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},300);
-//        sandJS.createGrain(canvas.width/2,canvas.height-10);
-//        sandJS.createGrain(canvas.width/2,canvas.height-15);
-//        sandJS.createGrain(canvas.width/2,canvas.height-20);
-//        sandJS.createGrain(canvas.width/2,canvas.height-25);
+        setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},200);
+        //testSand();
+        //setInterval(testSand,1000*36/2);
     }  
+    
+    function testSand(){
+        sandJS.createGrain(canvas.width/2+1,canvas.height-10);
+        sandJS.createGrain(canvas.width/2,canvas.height-15);
+        sandJS.createGrain(canvas.width/2-1,canvas.height-20);
+        sandJS.createGrain(canvas.width/2,canvas.height-25);
+        sandJS.createGrain(canvas.width/2-1,canvas.height-30);
+        sandJS.createGrain(canvas.width/2+1,canvas.height-35);
+    }
     
     
     function update(){
         cls();
         
-        sandJS.drawSand();
-        sandJS.updateSand();
+        sandJS.drawSand();  
+        sandJS.updateSand();    //sand update depends on the grains "seeing" each other, so update() has to go after draw()
         
         
     }
