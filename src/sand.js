@@ -18,20 +18,25 @@ let sandJS = {
             y: pY,
             color: '#ffe100',
             move(){
-                let imgData = ctx.getImageData(this.x,this.y,1,1);
-                console.log(imgData.data);
+                let imgData = ctx.getImageData(this.x-1,this.y+1,3,1);
                 
-//                //check below
-//                if(imgData.data[0]==0 && imgData.data[1]==0 && imgData.data[2] == 0){
-//                    if(this.y < canvas.height - 1) this.y++;
-//                }
-//                
-//                //check left
-//                else{ /*if(imgData.data[0]==0 && imgData.data[1]==0 && imgData.data[2]==0)*/
-//                    this.x--;
-//                    if(this.y < canvas.height - 1) this.y++;
-//                    console.log("leeeeeeft");
-//                }
+                //check below
+                if(imgData.data[4]==0 && imgData.data[5]==0 && imgData.data[6] == 0){
+                    if(this.y < canvas.height - 1) this.y++;
+                }
+                
+                //check left
+                else if(imgData.data[0]==0 && imgData.data[1]==0 && imgData.data[2]==0) {
+                    this.x--;
+                    if(this.y < canvas.height - 1) this.y++;
+                }
+                
+                //check right
+                else if(imgData.data[8]==0 && imgData.data[9]==0 && imgData.data[10]==0){
+                    this.x++;
+                    if(this.y < canvas.height - 1) this.y++;
+                    console.log("roight");
+                }
             }
         }
         sand.push(grain);

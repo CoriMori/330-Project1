@@ -17,19 +17,22 @@
         
         sandJS.init(ctx,canvas);
         
-        setInterval(update, 1000/1);
-        //setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},300);
-        sandJS.createGrain(canvas.width/2,canvas.height-10);
-        sandJS.createGrain(canvas.width/2,canvas.height-11);
+        setInterval(update, 1000/15);
+        setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},300);
+//        sandJS.createGrain(canvas.width/2,canvas.height-10);
+//        sandJS.createGrain(canvas.width/2,canvas.height-15);
+//        sandJS.createGrain(canvas.width/2,canvas.height-20);
+//        sandJS.createGrain(canvas.width/2,canvas.height-25);
     }  
     
     
     function update(){
         cls();
         
+        sandJS.drawSand();
         sandJS.updateSand();
         
-        sandJS.drawSand();
+        
     }
     
     function cls(){
