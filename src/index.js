@@ -3,7 +3,6 @@
     let ctx, canvas;
     const canvasWidth=640,canvasHeight=480;
 
-
     window.onload = init;
 
     function init(){
@@ -21,7 +20,12 @@
         setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},200);
         //testSand();
         //setInterval(testSand,1000*36/2);
+        document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
     }  
+    
+    function updateValues(){
+        sandJS.sandWidth=document.querySelector("#chooserSandSize").value;
+    }
     
     function testSand(){
         sandJS.createGrain(canvas.width/2+1,canvas.height-10);
