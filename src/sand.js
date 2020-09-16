@@ -5,7 +5,7 @@ let sandJS = {
     sand: [],
     ctx: [], //lil yucky but whatevs
     canvas: [],
-    sandWidth: 7,   //will be uniform among all grains, no need to store for each
+    sandWidth: 5,   //will be uniform among all grains, no need to store for each
     
     init(pCTX,pCanvas){
         sand = [];
@@ -45,6 +45,29 @@ let sandJS = {
                     if(this.y < canvas.height - sandJS.sandWidth) this.y += sandJS.sandWidth;
                     return;
                 }
+                
+//                let imgData = ctx.getImageData(this.x-1,this.y+1,3,1);
+//
+//                
+//                //check below
+//                if(imgData.data[4]==0 && imgData.data[5]==0 && imgData.data[6] == 0){
+//                    if(this.y < canvas.height - 1) this.y++;
+//                    return;
+//                }
+//                
+//                //check left
+//                if(imgData.data[0]==0 && imgData.data[1]==0 && imgData.data[2]==0) {
+//                    this.x--;
+//                    if(this.y < canvas.height - 1) this.y++;
+//                    return;
+//                }
+//                
+//                //check right
+//                if(imgData.data[8]==0 && imgData.data[9]==0 && imgData.data[10]==0){
+//                    this.x++;
+//                    if(this.y < canvas.height - 1) this.y++;
+//                    return;
+//                }
             }
         }
         sand.push(grain);

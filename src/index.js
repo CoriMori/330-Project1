@@ -20,8 +20,17 @@
         setInterval(update, 1000/15);
         setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},200);
         //testSand();
-        //setInterval(sandJS.testSand,1000*36/2);
+        //setInterval(testSand,1000*36/2);
     }  
+    
+    function testSand(){
+        sandJS.createGrain(canvas.width/2+1,canvas.height-10);
+        sandJS.createGrain(canvas.width/2,canvas.height-15);
+        sandJS.createGrain(canvas.width/2-1,canvas.height-20);
+        sandJS.createGrain(canvas.width/2,canvas.height-25);
+        sandJS.createGrain(canvas.width/2-1,canvas.height-30);
+        sandJS.createGrain(canvas.width/2+1,canvas.height-35);
+    }
     
     
     function update(){
