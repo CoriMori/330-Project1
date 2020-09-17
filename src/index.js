@@ -2,6 +2,7 @@
     
     let ctx, canvas;
     const canvasWidth=640,canvasHeight=480;
+    let canvasAdjust;
     
     let activeColor = "yellow",activeWidth = 3;
     let mousePos = {
@@ -17,6 +18,7 @@
         ctx=canvas.getContext('2d');
         canvas.width=canvasWidth;
         canvas.height=canvasHeight;
+        canvasAdjust = canvas.getBoundingClientRect();
 
         ctx.fillRect(0,0,canvasWidth,canvasHeight);
         
@@ -29,8 +31,8 @@
         document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
         document.querySelector("#chooserSandColor").onchange = function(e){activeColor=e.target.value;};
         canvas.addEventListener('mousemove',function(e){
-            mousePos.x = e.clientX;
-            mousePos.y = e.clientY;
+            mousePos.x = e.clientX - canvasAdjust.left;
+            mousePos.y = e.clientY - canvasAdjust.top;
         })
     }  
     
