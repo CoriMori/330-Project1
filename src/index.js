@@ -2,6 +2,8 @@
     
     let ctx, canvas;
     const canvasWidth=640,canvasHeight=480;
+    
+    let activeColor = "yellow",activeWidth = 1;
 
     window.onload = init;
 
@@ -17,14 +19,15 @@
         sandJS.init(ctx,canvas);
         
         setInterval(update, 1000/15);
-        setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2);},200);
+        setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2,activeWidth,activeColor);},200);
         //testSand();
         //setInterval(testSand,1000*36/2);
         document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
+        document.querySelector("#chooserSandColor").onchange = function(e){activeColor=e.target.value;};
     }  
     
     function updateValues(){
-        sandJS.sandWidth=document.querySelector("#chooserSandSize").value;
+        activeWidth=document.querySelector("#chooserSandSize").value;
     }
     
     function testSand(){

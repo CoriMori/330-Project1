@@ -5,7 +5,6 @@ let sandJS = {
     sand: [],
     ctx: [], //lil yucky but whatevs
     canvas: [],
-    sandWidth: 5,   //will be uniform among all grains, no need to store for each
     
     init(pCTX,pCanvas){
         sand = [];
@@ -13,36 +12,37 @@ let sandJS = {
         canvas = pCanvas;
     },
 
-    createGrain(pX,pY){
+    createGrain(pX,pY,pWidth=1,pColor){
         let grain = {
             x: pX,
             y: pY,
-            color: '#ffe100',
+            width: pWidth,
+            color: pColor,
             move(){
                 
                 //TODO: for speed purposes, pixel checks should disprove the need to fall first
                 
                 //check below
-                let img = ctx.getImageData(this.x,this.y+sandJS.sandWidth,1,1);
+                let img = ctx.getImageData(this.x,this.y+this.width,1,1);
                 if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
-                    if(this.y < canvas.height - sandJS.sandWidth) this.y += sandJS.sandWidth;
+                    if(this.y < canvas.height - this.width) this.y += this.width;
                     return;
                 }
                 
                 //check bottom left
-                img = ctx.getImageData(this.x - sandJS.sandWidth,this.y + sandJS.sandWidth,1,1);
+                img = ctx.getImageData(this.x - this.width,this.y + this.width,1,1);
                 if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
-                    this.x -= sandJS.sandWidth;
-                    if(this.y < canvas.height - sandJS.sandWidth) this.y += sandJS.sandWidth;
+                    this.x -= this.width;
+                    if(this.y < canvas.height - this.width) this.y += this.width;
                     return;
                 }
                 
                 
                 //check bottom right
-                img = ctx.getImageData(this.x + sandJS.sandWidth,this.y + sandJS.sandWidth,1,1);
+                img = ctx.getImageData(this.x + this.width,this.y + this.width,1,1);
                 if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
-                    this.x += sandJS.sandWidth;
-                    if(this.y < canvas.height - sandJS.sandWidth) this.y += sandJS.sandWidth;
+                    this.x += this.width;
+                    if(this.y < canvas.height - this.width) this.y += this.width;
                     return;
                 }
                 
@@ -83,9 +83,10 @@ let sandJS = {
         let imgData;
         for(let i = 0; i < sand.length; i++){
             //nightmare nightmare nightmare nightmare nightmare
+            //there's gotta be a way to optimize this
             ctx.save();
             ctx.fillStyle = sand[i].color;
-            ctx.fillRect(sand[i].x,sand[i].y,this.sandWidth,this.sandWidth);      //pretty sure this can be better by drawing directly to imageData
+            ctx.fillRect(sand[i].x,sand[i].y,sand[i].width,sand[i].width);
             ctx.restore();
         }
     },
