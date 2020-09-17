@@ -3,7 +3,11 @@
     let ctx, canvas;
     const canvasWidth=640,canvasHeight=480;
     
-    let activeColor = "yellow",activeWidth = 1;
+    let activeColor = "yellow",activeWidth = 3;
+    let mousePos = {
+        x: 0,
+        y:0
+    };
 
     window.onload = init;
 
@@ -19,11 +23,15 @@
         sandJS.init(ctx,canvas);
         
         setInterval(update, 1000/15);
-        setInterval(function(){sandJS.createGrain(canvas.width/2,canvas.height/2,activeWidth,activeColor);},200);
+        setInterval(function(){sandJS.createGrain(mousePos.x,mousePos.y,activeWidth,activeColor);},200);
         //testSand();
         //setInterval(testSand,1000*36/2);
         document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
         document.querySelector("#chooserSandColor").onchange = function(e){activeColor=e.target.value;};
+        canvas.addEventListener('mousemove',function(e){
+            mousePos.x = e.clientX;
+            mousePos.y = e.clientY;
+        })
     }  
     
     function updateValues(){

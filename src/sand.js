@@ -20,8 +20,6 @@ let sandJS = {
             color: pColor,
             move(){
                 
-                //TODO: for speed purposes, pixel checks should disprove the need to fall first
-                
                 //check below
                 let img = ctx.getImageData(this.x,this.y+this.width,1,1);
                 if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
