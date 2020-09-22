@@ -3,6 +3,8 @@
     let ctx, canvas;
     const canvasWidth=640,canvasHeight=480;
     let canvasAdjust;
+    let currentWidth;
+    let currentColor="Yellow";
     
     let mousePos = {
         x: 0,
@@ -28,7 +30,7 @@
         //testSand();
         //setInterval(testSand,1000*36/2);
         document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
-        document.querySelector("#chooserSandColor").onchange = function(e){activeColor=e.target.value;};
+        document.querySelector("#chooserSandColor").addEventListener("change",updateValues);
         canvas.addEventListener('mousemove',function(e){updateMousePosition(e);});
         canvas.addEventListener('mousedown',function(e){mouseClicked=true;});
         canvas.addEventListener('mouseup',function(e){mouseClicked=false;});
@@ -40,7 +42,8 @@
     }
     
     function updateValues(){
-        activeWidth=document.querySelector("#chooserSandSize").value;
+        currentWidth=document.querySelector("#chooserSandSize").value;
+        currentColor=document.querySelector("#chooserSandColor").value;
     }
     
     

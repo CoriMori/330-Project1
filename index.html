@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Sand Art</title>
-	<style src="styles/index.css"></style>
+	<link rel="stylesheet" href="styles/index.css">
 	<script src= "src/cnmLib.js"></script>
     <script src= "src/index.js"></script>
     <script src= "src/sand.js"></script>
@@ -13,6 +13,12 @@
 		Get a real browser!
 </canvas>
     
+    <div id="instructions">
+    <h2>Sand Art</h2>
+        <p>Click on the canvas to drop sand. Use the controls to change the color and brush size.</p>
+        <p>Draw whatever you want, but keep in mind that you cannot erase.</p>
+            <p>When you are done you can clear the canvas and start again, or click Export to save the picture.</p>
+    </div>
       <section id="controls">
     <!--<label>Outline: Temp while we figure out if this is doable
       <select id="chooserTool">
@@ -23,15 +29,15 @@
       </select>
     </label>-->
     
-    <label>Brush: 
+    <!--<label>Brush: 
       <select id="chooserBrush">
         <option>void</option>
         <option selected>sand</option>
           <option>wall</option>
       </select>
-     </label>
+     </label>-->
           
-    <label>Stream Speed: 
+    <!--<label>Stream Speed: 
       <select id="chooserStreamSpeed">
         <option>0</option>
         <option selected>1</option>
@@ -45,9 +51,9 @@
           <option>9</option>
         <option>10</option>
       </select>
-     </label>
+     </label>-->
     
-    <label>Sand Size: 
+    <label>Brush Width: 
       <select id="chooserSandSize">
         <option>1</option>
         <option selected>2</option>

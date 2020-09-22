@@ -1,0 +1,47 @@
+
+@font-face
+{
+    font-family:BlackGrounds;
+    src: url(BlackGrounds.ttf);
+}
+body{
+    font-family: BlackGrounds;
+    background-color: #EB877C;
+}
+
+input[type=button]{
+    font-family: BlackGrounds;
+    color:#ffffff;
+    background-color:#9E625C;
+    border-radius: 4px;
+}
+
+canvas{
+    position: absolute;
+    background: #ffffff;
+    z-index: 0;
+    left: 10px;
+    top:50px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+}
+
+#instructions{
+    font-family: BlackGrounds;
+    position: absolute;
+    right: 50px;
+    width: 500px;
+    border: 3px solid #9E7C3C;
+    padding: 10px;
+    text-align: center;
+    color: #000000;
+    background-color: #EBBC65;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+}
+
+#controls{
+    position: absolute;
+    z-index: 100;
+    left: 25px;
+    top: 10px;
+}
+
