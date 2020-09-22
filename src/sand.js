@@ -26,10 +26,17 @@ let sandJS = {
         }
     },
     
-    createGrain(pX,pY,color=1){
+    createGrain(pX,pY,color=1,radius=5){
         //convert screen position to grid position
         pX = Math.round(pX / this.cellSize);
         pY = Math.round(pY / this.cellSize);
+        
+        pX += (Math.random() * radius) - radius/2;
+        pY += (Math.random() * radius) - radius/2;
+        
+        pX = Math.round(pX);
+        pY = Math.round(pY);
+        
         
         grid[pX][pY] = color;
     },
