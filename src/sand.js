@@ -34,7 +34,8 @@ let sandJS = {
     
     updateSand(){
         for(let c = numColumns-1; c >= 0; c--){
-            for(let r = numRows-1; r >= 0; r--){
+            for(let r = numRows-2; r >= 0; r--){
+                
                 //detects sand
                 if(grid[c][r] == 1){
                     
@@ -45,13 +46,13 @@ let sandJS = {
                     }
                     
                     //handles sliding left
-                    else if(grid[c-1][r+1] == 0){
+                    else if(c != 0 && grid[c-1][r+1] == 0){
                         grid[c][r] = 0;
                         grid[c-1][r+1] = 1;
                     }
                     
                     //handles sliding right
-                    else if(grid[c+1][r+1] == 0){
+                    else if(c != numColumns - 1 && grid[c+1][r+1] == 0){
                         grid[c][r] = 0;
                         grid[c+1][r+1] = 1;
                     }
