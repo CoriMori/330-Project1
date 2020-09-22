@@ -3,6 +3,7 @@ let grid;
 /*
 0 == void
 1 == sand
+2 == wall
 */
 (function(){
 
@@ -17,7 +18,6 @@ let sandJS = {
         
         numRows = canvas.height / this.cellSize;
         numColumns = canvas.width / this.cellSize;
-        console.log(numColumns,numRows);
         grid = new Array(numColumns);
         for(let c = 0; c < numColumns; c++){
             grid[c] = new Array(numRows).fill(0);
@@ -65,7 +65,6 @@ let sandJS = {
         for(let c = 0; c < numColumns; c++){
             for(let r = 0; r < numRows; r++){
                 if(grid[c][r] == 1){
-                    console.log("draw");
                     ctx.fillStyle = "yellow";
                     ctx.fillRect(c*this.cellSize,r*this.cellSize,this.cellSize,this.cellSize);
                 }
