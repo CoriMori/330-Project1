@@ -35,10 +35,28 @@ let sandJS = {
     updateSand(){
         for(let c = numColumns-1; c >= 0; c--){
             for(let r = numRows-1; r >= 0; r--){
-                if(grid[c][r] == 1 && grid[c][r+1] == 0){
-                    grid[c][r] = 0;
-                    grid[c][r+1] = 1;
+                //detects sand
+                if(grid[c][r] == 1){
+                    
+                    //handles falling down
+                    if(grid[c][r+1] == 0){
+                        grid[c][r] = 0;
+                        grid[c][r+1] = 1;
+                    }
+                    
+                    //handles sliding left
+                    else if(grid[c-1][r+1] == 0){
+                        grid[c][r] = 0;
+                        grid[c-1][r+1] = 1;
+                    }
+                    
+                    //handles sliding right
+                    else if(grid[c+1][r+1] == 0){
+                        grid[c][r] = 0;
+                        grid[c+1][r+1] = 1;
+                    }
                 }
+                
             }
         }
     },
