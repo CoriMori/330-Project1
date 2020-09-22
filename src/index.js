@@ -4,7 +4,7 @@
     const canvasWidth=640,canvasHeight=480;
     let canvasAdjust;
     let currentWidth;
-    let currentColor="Yellow";
+    let currentColor=1;
     
     let mousePos = {
         x: 0,
@@ -51,8 +51,7 @@
         cls();
         
         if(mouseClicked){ 
-            sandJS.createGrain(mousePos.x,mousePos.y);
-            console.log("make sand");
+            sandJS.createGrain(mousePos.x,mousePos.y,currentColor);
         }
         
         sandJS.updateSand();
