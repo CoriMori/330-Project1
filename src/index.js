@@ -4,7 +4,7 @@
     const canvasWidth=640,canvasHeight=480;
     let canvasAdjust;
     
-    let activeColor = "yellow",activeWidth = 3;
+    let activeColor = "yellow";
     let mousePos = {
         x: 0,
         y:0
@@ -25,37 +25,33 @@
         sandJS.init(ctx,canvas);
         
         setInterval(update, 1000/15);
-        setInterval(function(){sandJS.createGrain(mousePos.x,mousePos.y,activeWidth,activeColor);},200);
         //testSand();
         //setInterval(testSand,1000*36/2);
         document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
         document.querySelector("#chooserSandColor").onchange = function(e){activeColor=e.target.value;};
-        canvas.addEventListener('mousemove',function(e){
-            mousePos.x = e.clientX - canvasAdjust.left;
-            mousePos.y = e.clientY - canvasAdjust.top;
-        })
+        canvas.addEventListener('mousemove',function(e){updateMousePosition(e);});
+        canvas.addEventListener('mousedown',mouseClick);
     }  
+                                
+    function updateMousePosition(e){
+        mousePos.x = e.clientX - canvasAdjust.left;
+        mousePos.y = e.clientY - canvasAdjust.top;
+    }
+    
+    function mouseClick(){
+        sandJS.createGrain(mousePos.x,mousePos.y);
+    }
     
     function updateValues(){
         activeWidth=document.querySelector("#chooserSandSize").value;
-    }
-    
-    function testSand(){
-        sandJS.createGrain(canvas.width/2+1,canvas.height-10);
-        sandJS.createGrain(canvas.width/2,canvas.height-15);
-        sandJS.createGrain(canvas.width/2-1,canvas.height-20);
-        sandJS.createGrain(canvas.width/2,canvas.height-25);
-        sandJS.createGrain(canvas.width/2-1,canvas.height-30);
-        sandJS.createGrain(canvas.width/2+1,canvas.height-35);
     }
     
     
     function update(){
         cls();
         
-        sandJS.drawSand();  
-        sandJS.updateSand();    //sand update depends on the grains "seeing" each other, so update() has to go after draw()
-        
+        sandJS.updateSand();
+        sandJS.renderSand();
         
     }
     

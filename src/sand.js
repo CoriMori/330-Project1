@@ -1,102 +1,62 @@
+let numRows, numColumns; 
+let grid;
+/*
+0 == void
+1 == sand
+*/
 (function(){
 
 let sandJS = {
-    
-    sand: [],
+    cellSize: 5,
     ctx: [], //lil yucky but whatevs
     canvas: [],
     
     init(pCTX,pCanvas){
-        sand = [];
         ctx = pCTX;
         canvas = pCanvas;
-    },
-
-    createGrain(pX,pY,pWidth=1,pColor){
-        let grain = {
-            x: pX,
-            y: pY,
-            width: pWidth,
-            color: pColor,
-            move(){
-                
-                //check below
-                let img = ctx.getImageData(this.x,this.y+this.width,1,1);
-                if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
-                    if(this.y < canvas.height - this.width) this.y += this.width;
-                    return;
-                }
-                
-                //check bottom left
-                img = ctx.getImageData(this.x - this.width,this.y + this.width,1,1);
-                if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
-                    this.x -= this.width;
-                    if(this.y < canvas.height - this.width) this.y += this.width;
-                    return;
-                }
-                
-                
-                //check bottom right
-                img = ctx.getImageData(this.x + this.width,this.y + this.width,1,1);
-                if(img.data[0]==0 && img.data[1]==0 && img.data[2]==0){
-                    this.x += this.width;
-                    if(this.y < canvas.height - this.width) this.y += this.width;
-                    return;
-                }
-                
-//                let imgData = ctx.getImageData(this.x-1,this.y+1,3,1);
-//
-//                
-//                //check below
-//                if(imgData.data[4]==0 && imgData.data[5]==0 && imgData.data[6] == 0){
-//                    if(this.y < canvas.height - 1) this.y++;
-//                    return;
-//                }
-//                
-//                //check left
-//                if(imgData.data[0]==0 && imgData.data[1]==0 && imgData.data[2]==0) {
-//                    this.x--;
-//                    if(this.y < canvas.height - 1) this.y++;
-//                    return;
-//                }
-//                
-//                //check right
-//                if(imgData.data[8]==0 && imgData.data[9]==0 && imgData.data[10]==0){
-//                    this.x++;
-//                    if(this.y < canvas.height - 1) this.y++;
-//                    return;
-//                }
-            }
+        
+        numRows = canvas.height / this.cellSize;
+        numColumns = canvas.width / this.cellSize;
+        console.log(numColumns,numRows);
+        grid = new Array(numColumns);
+        for(let c = 0; c < numColumns; c++){
+            grid[c] = new Array(numRows).fill(0);
         }
-        sand.push(grain);
+    },
+    
+    createGrain(pX,pY){
+        //convert screen position to grid position
+        pX = Math.round(pX / this.cellSize);
+        pY = Math.round(pY / this.cellSize);
+        
+        grid[pX][pY] = 1;
     },
     
     updateSand(){
-        for(let i = 0; i < sand.length; i++){
-            sand[i].move();
+        for(let c = numColumns-1; c >= 0; c--){
+            for(let r = numRows-1; r >= 0; r--){
+                if(grid[c][r] == 1 && grid[c][r+1] == 0){
+                    grid[c][r] = 0;
+                    grid[c][r+1] = 1;
+                }
+            }
         }
     },
     
-    drawSand(){
-        let imgData;
-        for(let i = 0; i < sand.length; i++){
-            //nightmare nightmare nightmare nightmare nightmare
-            //there's gotta be a way to optimize this
-            ctx.save();
-            ctx.fillStyle = sand[i].color;
-            ctx.fillRect(sand[i].x,sand[i].y,sand[i].width,sand[i].width);
-            ctx.restore();
+    renderSand(){
+        for(let c = 0; c < numColumns; c++){
+            for(let r = 0; r < numRows; r++){
+                if(grid[c][r] == 1){
+                    console.log("draw");
+                    ctx.fillStyle = "yellow";
+                    ctx.fillRect(c*this.cellSize,r*this.cellSize,this.cellSize,this.cellSize);
+                }
+            }
         }
     },
     
-    //garbo method because I'm lazy, should probably be deleted for final deliverable
-    testSand(){
-        createGrain(canvas.width/2+1,canvas.height-10);
-        createGrain(canvas.width/2,canvas.height-15);
-        createGrain(canvas.width/2-1,canvas.height-20);
-        createGrain(canvas.width/2,canvas.height-25);
-        createGrain(canvas.width/2-1,canvas.height-30);
-        createGrain(canvas.width/2+1,canvas.height-35);
+    clearSand(){
+        grid.fill(0);
     }
 }
 if(window) window["sandJS"] = sandJS;
