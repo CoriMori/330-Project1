@@ -9,9 +9,17 @@
     <script src= "src/sand.js"></script>
 </head>
 <body>
-<canvas>
+<canvas id="BGCanvas">
 		Get a real browser!
 </canvas>
+<canvas id="OutlineCanvas">
+    
+</canvas>
+<canvas id="DrawingCanvas">
+    
+</canvas>
+
+
     
     <div id="instructions">
     <h2>Sand Art</h2>
@@ -29,37 +37,28 @@
       </select>
     </label>-->
     
-    <!--<label>Brush: 
+    <label>Brush: 
       <select id="chooserBrush">
-        <option>void</option>
         <option selected>sand</option>
           <option>wall</option>
       </select>
-     </label>-->
+     </label>
           
     <!--<label>Stream Speed: 
       <select id="chooserStreamSpeed">
-        <option>0</option>
-        <option selected>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-        <option>10</option>
+        <option>30</option>
+        <option selected>60</option>
+          <option>120</option>
       </select>
      </label>-->
     
     <label>Brush Width: 
       <select id="chooserSandSize">
         <option>1</option>
-        <option selected>2</option>
+        <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option selected>5</option>
           <option>6</option>
           <option>7</option>
           <option>8</option>
@@ -77,7 +76,7 @@
       </select>
     </label>
     
-    <label>Fill Color: 
+    <label>Background Color: 
       <select id="chooserFillStyle"> 
         <option value="red">Red</option>
         <option value="green" >Green</option>

@@ -18,7 +18,6 @@ input[type=button]{
 
 canvas{
     position: absolute;
-    background: #ffffff;
     z-index: 0;
     left: 10px;
     top:50px;

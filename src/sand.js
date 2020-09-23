@@ -79,7 +79,7 @@ let sandJS = {
         }
     },
     
-    renderSand(){
+    renderSand(ctx){
         for(let c = 0; c < numColumns; c++){
             for(let r = 0; r < numRows; r++){
                 if(grid[c][r]==0) continue;
