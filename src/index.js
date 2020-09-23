@@ -4,7 +4,7 @@
     const canvasWidth=640,canvasHeight=480;
     let canvasAdjust;
     let currentWidth;
-    let currentColor=1;
+    let currentColor='#FFFF00';
     
     let mousePos = {
         x: 0,

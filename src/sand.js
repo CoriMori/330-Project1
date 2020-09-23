@@ -26,7 +26,7 @@ let sandJS = {
         }
     },
     
-    createGrain(pX,pY,color=1,radius=5){
+    createGrain(pX,pY,color=0,radius=5){
         //convert screen position to grid position
         pX = Math.round(pX / this.cellSize);
         pY = Math.round(pY / this.cellSize);
@@ -36,6 +36,8 @@ let sandJS = {
         
         pX = Math.round(pX);
         pY = Math.round(pY);
+        
+        
         
         
         grid[pX][pY] = color;
@@ -78,12 +80,7 @@ let sandJS = {
             for(let r = 0; r < numRows; r++){
                 if(grid[c][r]==0) continue;
                 
-                //TODO: ideally the color system should be made more robust
-                if(grid[c][r] == 1) ctx.fillStyle = "yellow";
-                else if(grid[c][r]==2){ console.log("red");ctx.fillStyle = "red";}
-                else if(grid[c][r]==3) ctx.fillStyle = "green";
-                else if(grid[c][r]==4) ctx.fillStyle = "blue";
-
+                ctx.fillStyle = grid[c][r];
                 ctx.fillRect(c*this.cellSize,r*this.cellSize,this.cellSize,this.cellSize);
             }
         }
