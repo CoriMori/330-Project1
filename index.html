@@ -20,6 +20,7 @@
 </canvas>
 
 
+
     
     <div id="instructions">
     <h2>Sand Art</h2>
@@ -28,19 +29,20 @@
             <p>When you are done you can clear the canvas and start again, or click Export to save the picture.</p>
     </div>
       <section id="controls">
-    <!--<label>Outline: Temp while we figure out if this is doable
-      <select id="chooserTool">
-        <option value="pencil" selected>Pencil</option>
-        <option value="rectangle">Rectangle</option> 
-        <option value="line">Line</option>
-        <option value="circle">Circle</option>
+    <label>Outlines:
+      <select id="chooserOutline">
+        <option value="none" selected>None</option>
+        <option value="corgi">Corgi</option> 
+        <option value="cat">Cat</option>
+        <option value="cactus">Cactus</option>
+        <option value="planet">Planet</option>
       </select>
-    </label>-->
+    </label>
     
     <label>Brush: 
       <select id="chooserBrush">
-        <option selected>sand</option>
-          <option>wall</option>
+        <option selected>Sand</option>
+          <option>Wall</option>
       </select>
      </label>
           
@@ -56,9 +58,9 @@
       <select id="chooserSandSize">
         <option>1</option>
         <option>2</option>
-          <option>3</option>
+          <option selected>3</option>
           <option>4</option>
-          <option selected>5</option>
+          <option>5</option>
           <option>6</option>
           <option>7</option>
           <option>8</option>
@@ -73,14 +75,16 @@
         <option value='#FF0000'>Red</option>
         <option value='#00FF00'>Green</option>
         <option value='#0000FF'>Blue</option>
+        <option value='#000000'>Black</option>
       </select>
     </label>
     
     <label>Background Color: 
       <select id="chooserFillStyle"> 
         <option value="red">Red</option>
+        <option value="white" selected>White</option>
         <option value="green" >Green</option>
-        <option value="blue" selected>Blue</option>
+        <option value="blue">Blue</option>
       </select>
     </label>
       
@@ -88,5 +92,10 @@
       <span><input id="btnClear" type="button" value="Clear"/></span>
       <span><input id="btnExport" type="button" value="Export"/></span>
   </section>
+    
+    <img id="Corgi" src="src/outlines/Corgi.png" width="640" height="480">
+    <img id="Cat" src="src/outlines/Cat.png" width="640" height="480">
+    <img id="Cactus" src="src/outlines/Cactus.png" width="640" height="480">
+    <img id="Planet" src="src/outlines/Planet.png" width="640" height="480">
 </body>
 </html>

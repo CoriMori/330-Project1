@@ -9,8 +9,9 @@
     let currentColor='#FFFF00';
     let currentBrush = "sand";
     let currentRadius;
-    let currentBGColor="black";
+    let currentBGColor="white";
     let currentSpeed=60;
+    let currentOutline = "none";
     //let animID;
     
     let mousePos = {
@@ -39,7 +40,10 @@
         canvas3.width=canvasWidth;
         canvas3.height=canvasHeight;
         
+        ctx1.save();
+        ctx1.fillStyle="white";
         ctx1.fillRect(0,0,canvasWidth,canvasHeight);
+        ctx1.restore();
         
         sandJS.init(ctx2,canvas2);    
         
@@ -70,12 +74,34 @@
         document.querySelector("#chooserSandSize").addEventListener("change",function(){
             currentRadius=document.querySelector("#chooserSandSize").value;
         });
-        /*document.querySelector("#chooserStreamSpeed").addEventListener("change",function(){
-                cancelAnimationFrame(animID);
-                currentSpeed=document.querySelector("#chooserStreamSpeed").value;
-                console.log(currentSpeed);
-                update(currentSpeed);
-        });*/
+        document.querySelector("#chooserOutline").addEventListener("change",function(){
+            currentOutline=document.querySelector("#chooserOutline").value;
+            console.log(currentOutline);
+            if(currentOutline=="none"){
+                console.log("None Loaded");
+                ctx3.clearRect(0,0,canvasWidth,canvasHeight);
+            }
+            if(currentOutline=="corgi"){
+                console.log("Corgi Loaded");
+                ctx3.clearRect(0,0,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Corgi"),canvasWidth/2,canvasHeight/2);
+            }
+            if(currentOutline=="cat"){
+                console.log("Cat Loaded");
+                ctx3.clearRect(0,0,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Cat"),canvasWidth/2,canvasHeight/2);
+            }
+            if(currentOutline=="cactus"){
+                console.log("Cactus Loaded");
+                ctx3.clearRect(0,0,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Cactus"),canvasWidth/2,canvasHeight/2);
+            }
+            if(currentOutline=="planet"){
+                console.log("Planet Loaded");
+                ctx3.clearRect(0,0,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Planet"),canvasWidth/2,canvasHeight/2);
+            }
+        });
         document.querySelector("#btnFill").addEventListener("click",function(){
             currentBGColor=document.querySelector("#chooserFillStyle").value;
             ctx1.fillStyle=currentBGColor;
@@ -87,7 +113,7 @@
             ctx.save();
             sandJS.clearSand();
             ctx2.clearRect(0,0,canvasWidth,canvasHeight);
-            currentBGColor="black";
+            currentBGColor="white";
             cls();
             ctx3.clearRect(0,0,canvasWidth,canvasHeight);
             ctx.restore();
