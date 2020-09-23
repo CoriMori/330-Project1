@@ -35,6 +35,12 @@ let sandJS = {
         pX = Math.round(pX);
         pY = Math.round(pY);
         
+        if(pX < 0) pX = 0;
+        else if(pX > numColumns-1) pX=numColumns-1;
+        
+        if(pY < 0) pY = 0;
+        else if(pY > numRows-1) pY=numRows-1;
+        
         
         grid[pX][pY] = color;
     },
