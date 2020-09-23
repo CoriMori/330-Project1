@@ -85,7 +85,7 @@
         document.querySelector("#btnClear").addEventListener("click",function(){
             console.log("clear");
             ctx.save();
-            //sandJS.clearSand();
+            sandJS.clearSand();
             ctx2.clearRect(0,0,canvasWidth,canvasHeight);
             currentBGColor="black";
             cls();

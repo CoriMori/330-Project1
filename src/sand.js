@@ -95,7 +95,9 @@ let sandJS = {
     },
     
     clearSand(){
-        grid.fill(0);
+        for(let c = 0; c < numColumns; c++)
+            for(let r = 0; r < numRows; r++)
+                grid[c][r] = 0;
     }
 }
 if(window) window["sandJS"] = sandJS;
