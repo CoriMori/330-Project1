@@ -2,10 +2,8 @@ let numRows, numColumns;
 let grid;
 /*
 0 == void
-1 == yellow
-2 == red
-3 == green
-4 == blue
+1 == wall
+hex == sand
 */
 (function(){
 
@@ -38,38 +36,44 @@ let sandJS = {
         pY = Math.round(pY);
         
         
-        
-        
         grid[pX][pY] = color;
+    },
+    
+    createWall(pX,pY){
+        pX = Math.round(pX / this.cellSize);
+        pY = Math.round(pY / this.cellSize);
+        
+        grid[pX][pY] = 1;
     },
     
     updateSand(){
         for(let c = numColumns-1; c >= 0; c--){
             for(let r = numRows-2; r >= 0; r--){
                 
-                //detects sand
-                if(grid[c][r] != 0){
-                    
-                    let currColor = grid[c][r];
-                    
-                    //handles falling down
-                    if(grid[c][r+1] == 0){
-                        grid[c][r] = 0;
-                        grid[c][r+1] = currColor;
-                    }
-                    
-                    //handles sliding left
-                    else if(c != 0 && grid[c-1][r+1] == 0){
-                        grid[c][r] = 0;
-                        grid[c-1][r+1] = currColor;
-                    }
-                    
-                    //handles sliding right
-                    else if(c != numColumns - 1 && grid[c+1][r+1] == 0){
-                        grid[c][r] = 0;
-                        grid[c+1][r+1] = currColor;
-                    }
+                if(grid[c][r]==0 || grid[c][r]==1) continue;
+
+                let currColor = grid[c][r];
+                
+                if(grid[c][r+1] == 1) continue;
+
+                //handles falling down
+                if(grid[c][r+1] == 0){
+                    grid[c][r] = 0;
+                    grid[c][r+1] = currColor;
                 }
+
+                //handles sliding left
+                else if(c != 0 && grid[c-1][r+1] == 0 && grid[c-1][r] != 1){
+                    grid[c][r] = 0;
+                    grid[c-1][r+1] = currColor;
+                }
+
+                //handles sliding right
+                else if(c != numColumns - 1 && grid[c+1][r+1] == 0 && grid[c+1][r] != 1){
+                    grid[c][r] = 0;
+                    grid[c+1][r+1] = currColor;
+                }
+
                 
             }
         }
@@ -79,6 +83,10 @@ let sandJS = {
         for(let c = 0; c < numColumns; c++){
             for(let r = 0; r < numRows; r++){
                 if(grid[c][r]==0) continue;
+                else if(grid[c][r]==1){
+                    ctx.fillStyle = '#808080';
+                    ctx.fillRect(c*this.cellSize,r*this.cellSize,this.cellSize,this.cellSize);
+                }
                 
                 ctx.fillStyle = grid[c][r];
                 ctx.fillRect(c*this.cellSize,r*this.cellSize,this.cellSize,this.cellSize);

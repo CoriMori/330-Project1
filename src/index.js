@@ -5,6 +5,7 @@
     let canvasAdjust;
     let currentWidth;
     let currentColor='#FFFF00';
+    let brushType = "sand";
     
     let mousePos = {
         x: 0,
@@ -27,8 +28,12 @@
         sandJS.init(ctx,canvas);
         
         setInterval(update, 1000/15);
-        //testSand();
-        //setInterval(testSand,1000*36/2);
+        
+        setInterval(function(){
+            if(brushType == "sand") brushType = "wall";
+            else brushType = "sand";
+        },5000);
+        
         document.querySelector("#chooserSandSize").addEventListener("change",updateValues);
         document.querySelector("#chooserSandColor").addEventListener("change",updateValues);
         canvas.addEventListener('mousemove',function(e){updateMousePosition(e);});
@@ -51,7 +56,8 @@
         cls();
         
         if(mouseClicked){ 
-            sandJS.createGrain(mousePos.x,mousePos.y,currentColor);
+            if(brushType == "sand") sandJS.createGrain(mousePos.x,mousePos.y,currentColor);
+            else sandJS.createWall(mousePos.x,mousePos.y);
         }
         
         sandJS.updateSand();
