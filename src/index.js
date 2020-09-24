@@ -2,7 +2,7 @@
     
     let ctx1, canvas1;  //Background canvas
     let ctx2, canvas2;  //Drawing canvas
-    let ctx3, canvas3;  //Outline canvas
+    //let ctx3, canvas3;  //Outline canvas
     const canvasWidth=750,canvasHeight=480;
     let canvasAdjust;
     let currentWidth;
@@ -11,7 +11,7 @@
     let currentRadius;
     let currentBGColor="#F9F8F3";
     let currentSpeed=60;
-    let currentOutline = "none";
+    //let currentOutline = "none";
     //let animID;
     
     let mousePos = {
@@ -35,10 +35,10 @@
         canvas2.height=canvasHeight;
         canvasAdjust = canvas2.getBoundingClientRect();
         
-        canvas3=document.querySelector("#OutlineCanvas");
+       /* canvas3=document.querySelector("#OutlineCanvas");
         ctx3=canvas3.getContext('2d');
         canvas3.width=canvasWidth;
-        canvas3.height=canvasHeight;
+        canvas3.height=canvasHeight;*/
         
         ctx1.save();
         ctx1.fillStyle="#F9F8F3";
@@ -74,7 +74,7 @@
         document.querySelector("#chooserSandSize").addEventListener("change",function(){
             currentRadius=document.querySelector("#chooserSandSize").value;
         });
-        document.querySelector("#chooserOutline").addEventListener("change",function(){
+        /*document.querySelector("#chooserOutline").addEventListener("change",function(){
             currentOutline=document.querySelector("#chooserOutline").value;
             
             if(currentOutline=="none"){
@@ -97,7 +97,7 @@
                 ctx3.drawImage(document.querySelector("#Planet"),canvasWidth/2,canvasHeight/2);
             }
 
-        });
+        });*/
         document.querySelector("#btnFill").addEventListener("click",function(){
             currentBGColor=document.querySelector("#chooserFillStyle").value;
             ctx1.fillStyle=currentBGColor;
