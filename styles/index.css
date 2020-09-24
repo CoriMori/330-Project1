@@ -23,6 +23,12 @@ canvas{
     top:50px;
     box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
 }
+#OutlineCanvas{
+    z-index: 1;
+}
+#DrawingCanvas{
+    z-index: 2;
+}
 
 #instructions{
     font-family: BlackGrounds;

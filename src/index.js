@@ -82,19 +82,19 @@
             }
             if(currentOutline=="corgi"){
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Corgi"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Corgi"),canvasWidth/2,canvasHeight/2);
             }
             if(currentOutline=="cat"){
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Cat"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Cat"),canvasWidth/2,canvasHeight/2);
             }
             if(currentOutline=="cactus"){
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Cactus"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Cactus"),canvasWidth/2,canvasHeight/2);
             }
             if(currentOutline=="planet"){
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Planet"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
+                ctx3.drawImage(document.querySelector("#Planet"),canvasWidth/2,canvasHeight/2);
             }
 
         });
