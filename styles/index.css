@@ -27,10 +27,12 @@ canvas{
 #instructions{
     font-family: BlackGrounds;
     position: absolute;
-    right: 50px;
-    width: 500px;
+    right: 40px;
+    width: 400px;
+    height: 500px;
     border: 3px solid #9E7C3C;
     padding: 10px;
+    line-height: 1.6;
     text-align: center;
     color: #000000;
     background-color: #EBBC65;
@@ -40,11 +42,18 @@ canvas{
 #controls{
     position: absolute;
     z-index: 100;
-    left: 25px;
+    left: 10px;
     top: 10px;
 }
 
 img{
     display: none;
+}
+
+#Lowerbuttons{
+    position: absolute;
+    z-index: 100;
+    left: 10px;
+    top: 530px;
 }
 

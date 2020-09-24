@@ -19,14 +19,11 @@
     
 </canvas>
 
-
-
     
     <div id="instructions">
     <h2>Sand Art</h2>
-        <p>Click on the canvas to drop sand. Use the controls to change the color and brush size.</p>
-        <p>Draw whatever you want, but keep in mind that you cannot erase.</p>
-            <p>When you are done you can clear the canvas and start again, or click Export to save the picture.</p>
+    <p>Welcome to Sand Art! Click on the screen to drop sand on the canvas. You can change the color of the sand, the 
+        background color, the sand brush width, and even add walls to act as outlines. As is the nature of sand art, once placed down you cannot undo. You can clear the canvas if you wish to restart. When you are finished with you art, you can click export and save your art if you'd like.</p>
     </div>
       <section id="controls">
     <label>Outlines:
@@ -41,8 +38,8 @@
     
     <label>Brush: 
       <select id="chooserBrush">
-        <option selected>Sand</option>
-          <option>Wall</option>
+        <option value="sand" selected>Sand</option>
+          <option value="wall">Wall</option>
       </select>
      </label>
           
@@ -54,7 +51,7 @@
       </select>
      </label>-->
     
-    <label>Brush Width: 
+    <label>Sand Brush Width: 
       <select id="chooserSandSize">
         <option>1</option>
         <option>2</option>
@@ -76,21 +73,26 @@
         <option value='#00FF00'>Green</option>
         <option value='#0000FF'>Blue</option>
         <option value='#000000'>Black</option>
+        <option value='#FFFFFF'>White</option>
       </select>
     </label>
     
     <label>Background Color: 
       <select id="chooserFillStyle"> 
-        <option value="red">Red</option>
-        <option value="white" selected>White</option>
-        <option value="green" >Green</option>
-        <option value="blue">Blue</option>
+        <option value="#DA0000">Red</option>
+        <option value="#F9F8F3" selected>White</option>
+        <option value="#026E18" >Green</option>
+        <option value="#87F4F9">Blue</option>
+        <option value="#F987F7">Pink</option>
+        <option value="#000000">Black</option>
       </select>
     </label>
-      
     <span><input id="btnFill" type="button" value="Fill"/></span>  
+      
+    <div id="Lowerbuttons">
       <span><input id="btnClear" type="button" value="Clear"/></span>
       <span><input id="btnExport" type="button" value="Export"/></span>
+    </div>
   </section>
     
     <img id="Corgi" src="src/outlines/Corgi.png" width="640" height="480">

@@ -3,13 +3,13 @@
     let ctx1, canvas1;  //Background canvas
     let ctx2, canvas2;  //Drawing canvas
     let ctx3, canvas3;  //Outline canvas
-    const canvasWidth=640,canvasHeight=480;
+    const canvasWidth=750,canvasHeight=480;
     let canvasAdjust;
     let currentWidth;
-    let currentColor='#FFFF00';
+    let currentColor='#F2DD57';
     let currentBrush = "sand";
     let currentRadius;
-    let currentBGColor="white";
+    let currentBGColor="#F9F8F3";
     let currentSpeed=60;
     let currentOutline = "none";
     //let animID;
@@ -41,7 +41,7 @@
         canvas3.height=canvasHeight;
         
         ctx1.save();
-        ctx1.fillStyle="white";
+        ctx1.fillStyle="#F9F8F3";
         ctx1.fillRect(0,0,canvasWidth,canvasHeight);
         ctx1.restore();
         
@@ -76,31 +76,27 @@
         });
         document.querySelector("#chooserOutline").addEventListener("change",function(){
             currentOutline=document.querySelector("#chooserOutline").value;
-            console.log(currentOutline);
+            
             if(currentOutline=="none"){
-                console.log("None Loaded");
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
             }
             if(currentOutline=="corgi"){
-                console.log("Corgi Loaded");
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Corgi"),canvasWidth/2,canvasHeight/2);
+                ctx3.drawImage(document.querySelector("#Corgi"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
             }
             if(currentOutline=="cat"){
-                console.log("Cat Loaded");
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Cat"),canvasWidth/2,canvasHeight/2);
+                ctx3.drawImage(document.querySelector("#Cat"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
             }
             if(currentOutline=="cactus"){
-                console.log("Cactus Loaded");
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Cactus"),canvasWidth/2,canvasHeight/2);
+                ctx3.drawImage(document.querySelector("#Cactus"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
             }
             if(currentOutline=="planet"){
-                console.log("Planet Loaded");
                 ctx3.clearRect(0,0,canvasWidth,canvasHeight);
-                ctx3.drawImage(document.querySelector("#Planet"),canvasWidth/2,canvasHeight/2);
+                ctx3.drawImage(document.querySelector("#Planet"),canvasWidth/2,canvasHeight/2,canvasWidth,canvasHeight);
             }
+
         });
         document.querySelector("#btnFill").addEventListener("click",function(){
             currentBGColor=document.querySelector("#chooserFillStyle").value;
@@ -113,11 +109,13 @@
             ctx.save();
             sandJS.clearSand();
             ctx2.clearRect(0,0,canvasWidth,canvasHeight);
-            currentBGColor="white";
+            currentBGColor="#F9F8F3";
             cls();
             ctx3.clearRect(0,0,canvasWidth,canvasHeight);
             ctx.restore();
         });
+        
+        document.querySelector("#btnExport").addEventListener("click",doExport); 
         
     }
     
@@ -140,4 +138,12 @@
         cnmLib.drawRect(ctx2,0,0,canvasWidth,canvasHeight,currentBGColor);
 
     }
+    
+            
+    function doExport(){
+        const data = canvas.toDataURL(); 
+        const newWindow = window.open();
+        newWindow.document.body.innerHTML = `<iframe src="${data}" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>`;
+    } 
+    
 })();
